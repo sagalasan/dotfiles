@@ -8,7 +8,11 @@
 
 dir=~/.dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc"    # list of files/folders to symlink in homedir
+
+b16dir=$dir/base16-shell
+b16dir_config=~/.config/base16-shell
+
+files="bashrc base16-color gitconfig"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -22,6 +26,8 @@ echo "Changing to the $dir directory"
 cd $dir
 echo "...done"
 
+##############
+
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
@@ -29,3 +35,23 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+##############
+
+# Move base16-shell color schemes to ~/.config/base16-shell
+shopt -s nullglob
+base16array=($b16dir/*)
+mkdir -p $b16dir_config
+cd $b16dir_config
+
+echo "Creating symlink for base16 shell colors"
+
+for ((i=0; i<${#base16array[@]}; i++ )); do
+    ln -sf "${base16array[$i]}" "${base16array[$i]##*/}"
+done
+
+shopt -u nullglob
+cd $dir
+
+##############
+
