@@ -12,7 +12,7 @@ olddir=~/dotfiles_old             # old dotfiles backup directory
 b16dir=$dir/base16-shell
 b16dir_config=~/.config/base16-shell
 
-files="bashrc base16-color gitconfig"    # list of files/folders to symlink in homedir
+files="bashrc base16-color gitconfig alias"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -28,7 +28,7 @@ echo "...done"
 
 ##############
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
+# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/dotfiles_old/
@@ -54,4 +54,3 @@ shopt -u nullglob
 cd $dir
 
 ##############
-
