@@ -131,4 +131,7 @@ function parse_git_branch {
 
 export PS1=$'${debian_chroot:+($debian_chroot)}\u250f\[\033[01;32m\]\u@\h\[\033[00m\]: \[\033[01;34m\]\w \[\033[01;33m\]$(parse_git_branch) \n\[\033[00m\]\u2517$ '
 
-source ~/.alias
+source $HOME/.alias
+if [ -f $HOME/path/path ]; then
+	. $HOME/path/path
+fi
