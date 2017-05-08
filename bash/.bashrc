@@ -169,3 +169,9 @@ export ANDROID_JACK_VM_ARGS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4G
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# added by Anaconda3 4.3.1 installer
+export PATH="/home/christiaan/anaconda3/bin:$PATH"
+
+#GOPATH
+export GOPATH=$HOME/go
