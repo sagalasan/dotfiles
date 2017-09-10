@@ -152,7 +152,7 @@ fi
 }
 
 # Set base 16 color scheme
-source $HOME/.base16-color
+#source $HOME/.base16-color
 
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "*"
