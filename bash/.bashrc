@@ -174,4 +174,8 @@ fi
 export PATH="/home/christiaan/anaconda3/bin:$PATH"
 
 #GOPATH
-export GOPATH=$HOME/go
+#export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin
+
+# JAVA_HOME
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
