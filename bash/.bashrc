@@ -179,3 +179,6 @@ export PATH=$PATH:/usr/local/go/bin
 
 # JAVA_HOME
 export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+
+export PATH=$PATH:/usr/local/go/bin
+
