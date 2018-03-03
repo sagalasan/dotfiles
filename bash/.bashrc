@@ -175,10 +175,14 @@ export PATH="/home/christiaan/anaconda3/bin:$PATH"
 
 #GOPATH
 #export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin
+export GOPATH=/usr/local/go/bin
+export PATH=$PATH:$GOPATH
 
 # JAVA_HOME
 export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 
 export PATH=$PATH:/usr/local/go/bin
 
+
+# added by Anaconda3 installer
+export PATH="/home/christiaan/anaconda3/bin:$PATH"
