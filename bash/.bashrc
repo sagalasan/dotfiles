@@ -148,6 +148,11 @@ function extract {
 fi
 }
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
 # Set base 16 color scheme
 #source $HOME/.base16-color
 
