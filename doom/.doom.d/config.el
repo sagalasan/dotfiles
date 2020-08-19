@@ -155,11 +155,6 @@
 
   )
 
-;; (use-package! org-jira)
-;; (after! org-jira
-;;   (setq jiralib-url "https://cdao-jira.intel.com")
-;;   )
-
 (after! smartparens
   ;; Remove keybindings from smartparens-mode-map
   (define-key smartparens-mode-map (kbd "<M-left>") nil)
