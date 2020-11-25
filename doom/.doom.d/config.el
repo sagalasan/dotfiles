@@ -165,3 +165,17 @@
   ;; Use meta-arrow to move windows
   (windmove-default-keybindings 'meta)
   )
+
+(use-package! ledger-mode
+  :init
+  (setq ledger-post-amount-alignment-column 62)
+
+  (setq ledger-reports
+        '(("net-worth" "%(binary) -f %(ledger-file) bal assets liabilities -V")
+          ("recent-10" "%(binary) -f %(ledger-file) reg %(account) --tail 10 | tac")
+          ("recent-100" "%(binary) -f %(ledger-file) reg %(account) --tail 100 | tac")
+          ("bal" "%(binary) -f %(ledger-file) bal")
+          ("reg" "%(binary) -f %(ledger-file) reg")
+          ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+          ("account" "%(binary) -f %(ledger-file) reg %(account)")))
+  )
