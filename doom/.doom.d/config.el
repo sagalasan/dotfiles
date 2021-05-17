@@ -132,7 +132,7 @@
   (setq org-startup-folded nil)
   (setq org-export-with-timestamps t)
   (setq org-export-with-planning t)
-  (setq org-agenda-span 21)
+  (setq org-agenda-span 90)
   (setq org-agenda-start-on-weekday nil)
   (setq org-agenda-start-day "-2Sun")
 

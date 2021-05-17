@@ -172,3 +172,4 @@ export PS1=$'${debian_chroot:+($debian_chroot)}\u250f\[\033[01;32m\]\u@\h\[\033[
 
 # Include doom emacs bin in path
 export PATH="~/.emacs.d/bin:$PATH"
+source "$HOME/.cargo/env"
