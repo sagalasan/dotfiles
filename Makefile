@@ -10,6 +10,10 @@
 help: ## Show this help message
 	@grep -E "^[a-zA-Z_-]+:.*?## .*$$" $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
+.PHONY: submodule
+submodule: ## Initialize and update git submodules
+	git submodule update --init --recursive
+
 .PHONY: stow
 stow: ## Symlink core dotfiles using stow
 	stow -v -t ~ core
