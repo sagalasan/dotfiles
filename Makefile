@@ -15,9 +15,9 @@ submodule: ## Initialize and update git submodules
 	git submodule update --init --recursive
 
 .PHONY: stow
-stow: ## Symlink core dotfiles using stow
-	stow -v -t ~ core
+stow: ## Symlink zsh dotfiles using stow
+	stow -v -t ~ -d core zsh
 
 .PHONY: stow-dry-run
-stow-dry-run: ## Dry run of stow command
-	stow --simulate -vt ~ core
+stow-dry-run: ## Dry run of stow command for zsh dotfiles
+	stow --simulate -vt ~ -d core zsh
