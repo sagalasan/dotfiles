@@ -8,7 +8,8 @@ CWD := $(abspath $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 # Gather subdirectories of layers/
 LAYERS := $(notdir $(patsubst %/,%,$(wildcard layers/*/)))
 
-STOW_FLAGS := -v -t ~ -d layers
+STOW_IGNORE := --ignore='^README.*' --ignore='^[.]gitignore$$' --ignore='^LICENSE.*' --ignore='^Makefile$$'
+STOW_FLAGS := -v -t ~ -d layers $(STOW_IGNORE)
 
 LOCAL_GITCONFIG := $(HOME)/.gitconfig.local
 
