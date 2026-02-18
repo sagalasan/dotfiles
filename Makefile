@@ -24,7 +24,7 @@ submodule: ## Initialize and update git submodules
 	git submodule update --init --recursive
 
 .PHONY: stow
-stow: ## Symlink dotfiles for all layers using stow (restow)
+stow: generate-local-git ## Symlink dotfiles for all layers using stow (restow)
 	stow -R $(STOW_FLAGS) $(LAYERS)
 
 .PHONY: stow-dry-run
@@ -43,6 +43,13 @@ generate-local-git: ## Generate local gitconfig file
 		echo "[include]" >> $(LOCAL_GITCONFIG); \
 		echo "    path = $$abs_path" >> $(LOCAL_GITCONFIG); \
 	done
+
+.PHONY: remove-local-git
+remove-local-git: ## Remove local gitconfig file
+	rm -f $(LOCAL_GITCONFIG)
+
+.PHONY: clean
+clean: remove-local-git unstow ## Full cleanup (unstow and remove local git)
 
 .PHONY: cwd
 cwd: ## Print the current directory of the Makefile
