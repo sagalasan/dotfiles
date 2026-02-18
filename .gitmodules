@@ -1,3 +1,0 @@
-[submodule "layers/core/.oh-my-zsh"]
-	path = layers/core/.oh-my-zsh
-	url = https://github.com/ohmyzsh/ohmyzsh.git

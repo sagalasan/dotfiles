@@ -21,10 +21,17 @@ Ensure you have the following installed:
 * `git`
 * `make`
 * `stow` (GNU Stow)
+* `zsh`
+* `zap` (Zsh plugin manager)
 
-On Debian/Ubuntu-based systems, you can install them with:
+On Debian/Ubuntu-based systems, you can install the system dependencies with:
 ```bash
-sudo apt install git make stow
+sudo apt install git make stow zsh
+```
+
+To install `zap` while keeping your existing `.zshrc`, run:
+```bash
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --keep
 ```
 
 ## Setup
