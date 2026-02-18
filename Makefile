@@ -2,6 +2,14 @@
 #
 # Run `make` for a list of targets. See README.md for more details.
 
+# https://stackoverflow.com/a/35698978
+CWD := $(abspath $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST))))))
+
+# Gather subdirectories of layers/
+LAYERS := $(notdir $(patsubst %/,%,$(wildcard layers/*/)))
+
+STOW_FLAGS := -v -t ~ -d layers
+
 LOCAL_GITCONFIG := $(HOME)/.gitconfig.local
 
 .NOTPARALLEL:
@@ -16,12 +24,16 @@ submodule: ## Initialize and update git submodules
 	git submodule update --init --recursive
 
 .PHONY: stow
-stow: ## Symlink zsh dotfiles using stow
-	stow -v -t ~ -d core zsh
+stow: ## Symlink dotfiles for all layers using stow (restow)
+	stow -R $(STOW_FLAGS) $(LAYERS)
 
 .PHONY: stow-dry-run
-stow-dry-run: ## Dry run of stow command for zsh dotfiles
-	stow --simulate -vt ~ -d core zsh
+stow-dry-run: ## Dry run of stow command for all layers
+	stow --simulate -R $(STOW_FLAGS) $(LAYERS)
+
+.PHONY: unstow
+unstow: ## Remove symlinks for all layers using stow
+	stow -D $(STOW_FLAGS) $(LAYERS)
 
 .PHONY: generate-local-git
 generate-local-git: ## Generate local gitconfig file
@@ -31,3 +43,11 @@ generate-local-git: ## Generate local gitconfig file
 		echo "[include]" >> $(LOCAL_GITCONFIG); \
 		echo "    path = $$abs_path" >> $(LOCAL_GITCONFIG); \
 	done
+
+.PHONY: cwd
+cwd: ## Print the current directory of the Makefile
+	@echo $(CWD)
+
+.PHONY: layers
+layers: ## Print the LAYERS variable
+	@echo $(LAYERS)
