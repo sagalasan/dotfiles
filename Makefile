@@ -8,10 +8,12 @@ CWD := $(abspath $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 # Gather subdirectories of layers/
 LAYERS := $(notdir $(patsubst %/,%,$(wildcard layers/*/)))
 
-STOW_IGNORE := --ignore='^README.*' --ignore='^[.]gitignore$$' --ignore='^LICENSE.*' --ignore='^Makefile$$'
+STOW_IGNORE := --ignore='^README.*' --ignore='^[.]gitignore$$' --ignore='^LICENSE.*' --ignore='^Makefile$$' --ignore='^install[.]d$$'
 STOW_FLAGS := -v -t ~ -d layers $(STOW_IGNORE)
 
 LOCAL_GITCONFIG := $(HOME)/.gitconfig.local
+
+INSTALL_SCRIPTS := $(wildcard layers/*/install.d/*.sh)
 
 .NOTPARALLEL:
 .DEFAULT_GOAL := help
@@ -19,6 +21,13 @@ LOCAL_GITCONFIG := $(HOME)/.gitconfig.local
 .PHONY: help
 help: ## Show this help message
 	@grep -E "^[a-zA-Z_-]+:.*?## .*$$" $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: install $(INSTALL_SCRIPTS)
+install: $(INSTALL_SCRIPTS) ## Run all idempotent installation scripts in layers
+
+$(INSTALL_SCRIPTS):
+	@echo "Running installation script: $@"
+	@bash $@
 
 .PHONY: submodule
 submodule: ## Initialize and update git submodules
