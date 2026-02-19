@@ -4,6 +4,7 @@
 # Load plugins
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
+plug "zsh-users/zsh-history-substring-search"
 
 # Load .zsh files
 plug "$HOME/.zsh/*"
