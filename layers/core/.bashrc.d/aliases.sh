@@ -18,6 +18,3 @@ alias ll='ls -lahF'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
-# Reload shell
-alias reload='exec zsh'
