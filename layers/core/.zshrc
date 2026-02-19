@@ -11,3 +11,6 @@ plug "$HOME/.zsh/*"
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
+
+# Initialise starship prompt
+eval "$(starship init zsh)"
