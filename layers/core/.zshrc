@@ -5,6 +5,9 @@
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 
+# Load .zsh files
+plug "$HOME/.zsh/*"
+
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
