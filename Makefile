@@ -13,7 +13,7 @@ STOW_FLAGS := -v -t ~ -d layers $(STOW_IGNORE)
 
 LOCAL_GITCONFIG := $(HOME)/.gitconfig.local
 
-INSTALL_SCRIPTS := $(wildcard layers/*/install.d/*.sh)
+INSTALL_SCRIPTS := $(sort $(wildcard layers/*/install.d/*.sh))
 
 .NOTPARALLEL:
 .DEFAULT_GOAL := help
